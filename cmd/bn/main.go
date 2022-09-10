@@ -29,11 +29,6 @@ func main() {
 	os.Chdir(brain)
 	createDirectory(formatedDate)
 
-	path, err := os.Getwd()
-	if err != nil {
-		fmt.Println(err)
-	}
-
 	file, err := os.Create("README.md")
 	if err != nil {
 		fmt.Println(err)
