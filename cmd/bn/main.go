@@ -18,9 +18,7 @@ func formatedDate() string {
 }
 func createDirectory(title string) {
 	os.Mkdir(title, 0750)
-	fmt.Println(title)
 	os.Chdir(title)
-	fmt.Println(title)
 }
 func main() {
 
