@@ -22,14 +22,14 @@ func createDirectory(title string) {
 }
 func main() {
 
-	brain := filepath.Dir("/home/boost/projects/test/dump/")
-
+	brain := filepath.Dir("/home/boost/liopin/brain/")
 	formatedDate := formatedDate()
 
 	os.Chdir(brain)
+
 	createDirectory(formatedDate)
 
-	file, err := os.Create("README.md")
+	_, err := os.Create("README.md")
 	if err != nil {
 		fmt.Println(err)
 	}
