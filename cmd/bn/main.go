@@ -35,22 +35,12 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(path)
 
 	file, err := os.Create("README.md")
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(file)
 
-	lscmd := exec.Command("ls")
-	output, err := lscmd.CombinedOutput()
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Printf("Output \n%s\n", string(output))
-
-	fmt.Println("exe vi")
 	cmd := exec.Command("vim", "README.md")
 	cmd.Stdout = os.Stdout
 	cmd.Stdin = os.Stdin
