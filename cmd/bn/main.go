@@ -16,30 +16,38 @@ func formatedDate() string {
 		current_time.Hour(), current_time.Minute(), current_time.Second())
 	return formatedDate
 }
+
 func createDirectory(title string) {
-	os.Mkdir(title, 0750)
+	err := os.Mkdir(title, 0750)
+	if err != nil {
+		log.Fatal(err)
+	}
 	os.Chdir(title)
 }
+
 func main() {
 
 	brain := filepath.Dir("/home/boost/liopin/brain/")
 	formatedDate := formatedDate()
 
-	os.Chdir(brain)
+	err := os.Chdir(brain)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	createDirectory(formatedDate)
 
-	_, err := os.Create("README.md")
+	_, err = os.Create("README.md")
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 	}
 
 	cmd := exec.Command("vim", "README.md")
 	cmd.Stdout = os.Stdout
 	cmd.Stdin = os.Stdin
 	cmd.Stderr = os.Stderr
-	oops := cmd.Run()
+	err = cmd.Run()
 	if err != nil {
-		log.Fatal(oops)
+		log.Println(err)
 	}
 }
